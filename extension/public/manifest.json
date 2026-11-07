@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "AI Website Guide",
+  "version": "0.1.0",
+  "description": "AI-powered guidance that highlights what to click on any website.",
+  "permissions": ["sidePanel", "activeTab", "scripting", "storage"],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Open AI Website Guide"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
