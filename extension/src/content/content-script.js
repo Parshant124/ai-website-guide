@@ -1,7 +1,19 @@
-// Runs inside the webpage. Stage 1: respond to a ping only.
+import { MSG } from "../shared/messages.js";
+import { scanPage } from "./inspector.js";
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message?.type === "PING_PAGE") {
-    sendResponse({ ok: true, title: document.title, url: location.href });
+  switch (message?.type) {
+    case MSG.PING_PAGE:
+      sendResponse({ ok: true, title: document.title, url: location.href });
+      break;
+
+    case MSG.SCAN_PAGE:
+      try {
+        sendResponse({ ok: true, data: scanPage() });
+      } catch (e) {
+        sendResponse({ ok: false, error: e.message });
+      }
+      break;
   }
-  // No async response needed, so we do not return true.
+  // Synchronous responses only, so we do not return true.
 });

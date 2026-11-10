@@ -15,10 +15,8 @@ export default defineConfig({
           __dirname,
           "src/background/service-worker.js",
         ),
-        "content-script": resolve(__dirname, "src/content/content-script.js"),
       },
       output: {
-        // Fixed names so manifest.json can reference them
         entryFileNames: "[name].js",
         chunkFileNames: "chunks/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
