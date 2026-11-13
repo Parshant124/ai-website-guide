@@ -1,18 +1,20 @@
 {
   "manifest_version": 3,
   "name": "AI Website Guide",
-  "version": "0.1.0",
-  "description": "AI-powered guidance that highlights what to click on any website.",
-  "permissions": ["sidePanel", "activeTab", "scripting", "storage"],
+  "version": "0.2.0",
+  "description": "AI-powered guidance that tells you what to click on any website.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["sidePanel", "activeTab", "scripting"],
   "host_permissions": ["http://*/*", "https://*/*"],
-  "background": {
-    "service_worker": "service-worker.js"
-  },
-  "side_panel": {
-    "default_path": "sidepanel.html"
-  },
+  "background": { "service_worker": "service-worker.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
   "action": {
-    "default_title": "Open AI Website Guide"
+    "default_title": "Open AI Website Guide",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png" }
   },
   "content_scripts": [
     {
